@@ -2,8 +2,7 @@
 """Script para gerar QR Codes em png"""
 
 import qrcode
-import qrcode.image.svg
-import time
+from os import listdir, system
 
 class persona():
     def __init__(self, name="Forrest Gump", phone="+123 555 0135", email="forrestgump@forrest.sa"):
@@ -22,13 +21,14 @@ fn = input(">>>> Nome do arquivo:\t")
 if fn == "exemplo":
     data = persona()
 else:
-    N = input(">>>> Nome:\t\t")
-    TEL = input(">>>> Telefone:\t")
-    EMAIL = input(">>>> Email:\t\t")
-    data = persona(name=N, phone=TEL, email=EMAIL)
-    
+    data = persona(
+        name  = input(">>>> Nome:\t\t"), 
+        phone = input(">>>> Telefone:\t\t"), 
+        email = input(">>>> Email:\t\t")
+    )
 
-print("\nNome:\t{0}\nTelefone:\t{1}\nEmail:\t{2}\n".format(data.name, data.phone, data.email))
+
+print("\nNome:\t\t{0}\nTelefone:\t{1}\nEmail:\t\t{2}\n".format(data.name, data.phone, data.email))
 
 content = "MECARD:N:{0};TEL:{1};EMAIL:{2};;".format(data.name, data.phone, data.email)
 
@@ -39,8 +39,10 @@ qr = qrcode.QRCode(
     border=4
 )
 
+if "output" not in listdir():
+    system("mkdir output")
 
 qr.add_data('{}'.format(content))
 qr.make(fit=True)
-img = qr.make_image(fill_color="black", back_color="white")
-img.save('{}_gen.png'.format(fn), "PNG")
+img = qr.make_image(fill_color="red", back_color="black")
+img.save('./output/{}_gen.png'.format(fn), "PNG")

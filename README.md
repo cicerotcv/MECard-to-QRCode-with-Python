@@ -18,3 +18,6 @@
 <hr>
 <h3>Demo:</h3>
 <img src="./assets/demo.gif">
+<hr>
+<span>O script pode ser modificado e mais campos podem ser adicionados. Você pode ver os campos disponíveis <a
+        href="https://en.wikipedia.org/wiki/MeCard_(QR_code)">clicando aqui</a>.</span>
