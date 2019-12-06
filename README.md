@@ -1,2 +1,3 @@
-# MECard-to-QRCode-with-Python
-Script que embute um cartão de visita em um QR Code.
+<h1> MECard-to-QRCode-with-Python </h1>
+<h3> Ideia Geral</h3>
+
